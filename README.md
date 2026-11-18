@@ -6,7 +6,13 @@ own scores for errors and bias, and leaves every final decision to a person.
 
 Final project, *Advanced Agentic AI Systems Engineering*, SDAIA Academy.
 
-**Team:** `<member 1>`, `<member 2>`, `<member 3>`
+**Team:**
+
+| Name | الاسم |
+|---|---|
+| Omar Alenezi | عمر العنزي |
+| Abdullah Alwuhaibi | عبدالله الوهيبي |
+| Faris Alqahtani | فارس القحطاني |
 
 ---
 
