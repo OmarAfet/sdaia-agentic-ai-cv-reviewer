@@ -1,0 +1,26 @@
+[
+  {
+    "id": "backend-engineer",
+    "title": "Backend Engineer (Python)",
+    "description": "Build and run REST APIs for a fintech platform. Design PostgreSQL schemas, containerise services with Docker, and deploy to AWS with CI/CD.",
+    "required_skills": ["Python", "Django", "PostgreSQL", "REST API", "Docker", "Git"],
+    "nice_to_have": ["AWS", "Kubernetes", "Redis", "CI CD"],
+    "min_years": 3
+  },
+  {
+    "id": "data-analyst",
+    "title": "Data Analyst",
+    "description": "Turn business data into dashboards and decisions. Write SQL, clean data in Python, and present findings to managers.",
+    "required_skills": ["SQL", "Excel", "Python", "Power BI", "Statistics"],
+    "nice_to_have": ["Tableau", "pandas", "A/B testing"],
+    "min_years": 2
+  },
+  {
+    "id": "soc-analyst",
+    "title": "Cybersecurity SOC Analyst",
+    "description": "Monitor alerts in the SIEM, triage incidents, and write incident reports for a 24/7 Security Operations Center.",
+    "required_skills": ["SIEM", "Incident Response", "Networking", "Linux", "Threat Intelligence"],
+    "nice_to_have": ["Splunk", "Python", "CompTIA Security+", "MITRE ATT&CK"],
+    "min_years": 1
+  }
+]
