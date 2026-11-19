@@ -64,59 +64,27 @@ ai-cv-reviewer/
 
 ```mermaid
 flowchart LR
-    U[HR user<br/>CLI] -->|CV file + job id| P[pipeline.review_cv]
-    P --> G[LangGraph StateGraph<br/>+ checkpointer]
-
-    subgraph Guardrails
-        V[Input validation]
-        PII[PII + protected<br/>attribute masking]
-        INJ[Injection detection<br/>regex + Prompt Guard 2<br/>+ gpt-oss-safeguard]
-        B[Bias + consistency<br/>output filter]
-        H[Human approval<br/>interrupt]
-    end
-
-    subgraph Agents
-        A1[Parser agent]
-        A2[Matcher agent]
-        A3[Reviewer agent]
-    end
-
-    subgraph Tools
-        T1[File reader<br/>PDF/DOCX/TXT<br/>+ hidden-text detector]
-        T2[Job DB<br/>SQLite]
-        T3[Skill-match<br/>calculator]
-    end
-
-    G --- V & PII & INJ & B & H
-    G --- A1 & A2 & A3
-    V --- T1 & T2
-    A2 --- T3
-    A1 & A2 & A3 -->|structured output| LLM[(Groq<br/>gpt-oss-120b<br/>→ gpt-oss-20b<br/>→ qwen3.8-27b)]
-    INJ --> LLM
-    G --> L[(logs/*.jsonl<br/>trace)]
-    G --> R[(reports/*.md, *.json)]
+    HR[HR user] --> WF[LangGraph workflow]
+    WF --> GR[Guardrails<br/>validate file<br/>mask PII<br/>block injection<br/>check bias]
+    WF --> AG[Agents<br/>Parser<br/>Matcher<br/>Reviewer]
+    WF --> TL[Tools<br/>file reader<br/>job DB<br/>skill match]
+    AG --> LLM[(Groq models)]
+    WF --> OUT[(Reports + logs)]
 ```
 
 ## 4. Workflow
 
 ```mermaid
 flowchart TD
-    S([start]) --> I[intake<br/>validate file, read CV, look up job]
-    I -->|invalid| F[finalize<br/>report]
-    I -->|ok| SEC[security<br/>mask PII, scan for injection]
-    SEC -->|injection found| HR
-    SEC -->|clean| PA[Parser agent]
-    PA -->|LLM down| F
-    PA --> M[Matcher agent<br/>+ skill-match tool]
-    M -->|LLM down| F
-    M --> RV[Reviewer agent<br/>+ bias / drift / band checks]
-    RV -->|rejected, revisions ≤ 2| M
-    RV -->|rejected 3 times| HR
-    RV -->|approved| D{score ≥ 70?}
-    D -->|yes: propose shortlist| HR
-    D -->|no: propose reject| HR
-    HR[[hr_review<br/>human approval: shortlist / reject / hold]] --> F
-    F --> E([end])
+    A[Intake<br/>check file, read CV] -->|valid| B[Security<br/>mask PII, scan for injection]
+    B -->|clean| C[Parser agent]
+    C --> D[Matcher agent]
+    D --> E[Reviewer agent]
+    E -->|rejected, max 2 times| D
+    E -->|approved| F[HR decision<br/>AI proposes, a person decides]
+    B -->|injection| F
+    A -->|invalid| G[Report]
+    F --> G
 ```
 
 **Decision points:** invalid input; injection found; LLM outage; Reviewer approve /
