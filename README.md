@@ -268,4 +268,4 @@ docker run --rm --env-file .env -v "$PWD/data/cvs:/app/data/cvs:ro" \
 
 ## 13. SDAIA Academy GitHub Repository Link
 
-`<add the SDAIA Academy repository link here>`
+<https://github.com/SDAIAAcademy>
