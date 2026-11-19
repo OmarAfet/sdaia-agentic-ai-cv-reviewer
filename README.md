@@ -8,11 +8,11 @@ Final project, *Advanced Agentic AI Systems Engineering*, SDAIA Academy.
 
 **Team:**
 
-| Name | الاسم |
-|---|---|
-| Omar Alenezi | عمر العنزي |
-| Abdullah Alwhaibi | عبدالله الوهيبي |
-| Faris Alqahtani | فارس القحطاني |
+| Name | الاسم | GitHub |
+|---|---|---|
+| Omar Alenezi | عمر العنزي | [@OmarAfet](https://github.com/OmarAfet) |
+| Abdullah Alwhaibi | عبدالله الوهيبي | [@abodalwhibi1-spec](https://github.com/abodalwhibi1-spec) |
+| Faris Alqahtani | فارس القحطاني | [@farissa1](https://github.com/farissa1) |
 
 ---
 
