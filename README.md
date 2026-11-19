@@ -11,7 +11,7 @@ Final project, *Advanced Agentic AI Systems Engineering*, SDAIA Academy.
 | Name | الاسم |
 |---|---|
 | Omar Alenezi | عمر العنزي |
-| Abdullah Alwuhaibi | عبدالله الوهيبي |
+| Abdullah Alwhaibi | عبدالله الوهيبي |
 | Faris Alqahtani | فارس القحطاني |
 
 ---
